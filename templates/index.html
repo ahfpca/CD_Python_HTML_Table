@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <title>HTML Table</title>
+</head>
+<body>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>User #</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Full Name</th>
+                <th>Full Name in upper case</th>
+                <th>Length of full name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rec in data: %}
+            {% set fullname = rec.first_name + " " + rec.last_name %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ rec.first_name }}</td>
+                <td>{{ rec.last_name }}</td>
+                <td>{{ fullname }}</td>
+                <td>{{ fullname|upper }}</td>
+                <td>{{ fullname|length }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.slim.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</body>
+</html>
